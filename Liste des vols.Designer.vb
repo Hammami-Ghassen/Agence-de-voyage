@@ -36,10 +36,13 @@ Partial Class Liste_des_vols
         ' 
         ' DataGridView1
         ' 
+        DataGridView1.AllowUserToAddRows = False
+        DataGridView1.AllowUserToDeleteRows = False
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {num, dest, dateVol, heure, nbPlace, prix})
         DataGridView1.Location = New Point(12, 95)
         DataGridView1.Name = "DataGridView1"
+        DataGridView1.ReadOnly = True
         DataGridView1.Size = New Size(776, 343)
         DataGridView1.TabIndex = 0
         ' 
@@ -47,31 +50,37 @@ Partial Class Liste_des_vols
         ' 
         num.HeaderText = "Numéro du vol"
         num.Name = "num"
+        num.ReadOnly = True
         ' 
         ' dest
         ' 
         dest.HeaderText = "Dstination"
         dest.Name = "dest"
+        dest.ReadOnly = True
         ' 
         ' dateVol
         ' 
         dateVol.HeaderText = "Date"
         dateVol.Name = "dateVol"
+        dateVol.ReadOnly = True
         ' 
         ' heure
         ' 
         heure.HeaderText = "Heure"
         heure.Name = "heure"
+        heure.ReadOnly = True
         ' 
         ' nbPlace
         ' 
         nbPlace.HeaderText = "Nombre de places"
         nbPlace.Name = "nbPlace"
+        nbPlace.ReadOnly = True
         ' 
         ' prix
         ' 
         prix.HeaderText = "Prix"
         prix.Name = "prix"
+        prix.ReadOnly = True
         ' 
         ' btn_reserver
         ' 

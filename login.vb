@@ -34,15 +34,44 @@ Public Class login
         Dim password As String = pwd_txt.Text
 
         ' Validate credentials
-        If ValidateCredentials(username, password) And username.Equals("admin") Then
+        If ValidateCredentials(username, password) Then
             If username.Equals("admin") Then
-
+                admin_select.Show()
+                Me.Hide()
             Else
-
+                Liste_des_vols.Show()
+                Me.Hide()
             End If
 
         Else
-            MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Mot de passe incorrecte!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
+    Private Sub btn_cancel_login_Click(sender As Object, e As EventArgs) Handles btn_cancel_login.Click
+        Me.Close()
+    End Sub
+    Private isClosingConfirmed As Boolean = False
+
+    Private Sub loginFormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If Not ConfirmClose() Then
+            e.Cancel = True
+        End If
+    End Sub
+    Private Function ConfirmClose() As Boolean
+        If Not isClosingConfirmed Then
+            Dim result As DialogResult = MessageBox.Show("Êtes-vous sûr de vouloir fermer l'application ? ",
+                                                         "Close Confirmation",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                isClosingConfirmed = True
+                Return True
+            Else
+                Return False
+            End If
+        End If
+        Return True
+    End Function
 End Class
